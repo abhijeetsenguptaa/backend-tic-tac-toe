@@ -39,9 +39,13 @@ io.on("connection", (socket) => {
         const currentTimezone = moment.tz.guess();
         const currentTime = moment().tz(currentTimezone);
         const formattedTime = currentTime.format('HH:mm a');
+        const timestamp = Date.now();
+        const dateObj = new Date(timestamp);
+        const hours = dateObj.getHours();
+        const minutes = dateObj.getMinutes();
         return {
             bot,
-            time: formattedTime,
+            time: `${hours} : ${minutes}`,
             message
         }
     }
